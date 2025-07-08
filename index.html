@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Move - Premier Physiotherapy Centre | Amwaj Island, Bahrain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vital-white': '#d4d4d2',
+                        'vital-dark': '#1e2b3c',
+                        'vital-green': '#85a245',
+                        'vital-blue': '#68a9bf',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e2b3c 0%, #68a9bf 100%); }
+        .scroll-smooth { scroll-behavior: smooth; }
+        .glass-effect { backdrop-filter: blur(10px); background: rgba(212, 212, 210, 0.1); }
+        
+        /* Logo Inversion */
+        .logo-inverted {
+            filter: invert(1) brightness(1.2);
+            transition: filter 0.3s ease;
+        }
+        
+        .logo-normal {
+            filter: invert(0) brightness(1);
+            transition: filter 0.3s ease;
+        }
+        
+        /* Particle System */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(133, 162, 69, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .particle:nth-child(odd) {
+            background: rgba(104, 169, 191, 0.08);
+            animation-duration: 25s;
+        }
+        
+        .particle:nth-child(3n) {
+            background: rgba(212, 212, 210, 0.06);
+            animation-duration: 30s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="scroll-smooth bg-vital-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-vital-blue/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="assets/logo.png" alt="Vital Move Logo" class="h-24 w-auto logo-inverted" id="navbar-logo">
+                </div>
+                <div class="hidden md:flex space-x-8" id="nav-links">
+                    <a href="#home" class="text-white hover:text-vital-green transition-colors">Home</a>
+                    <a href="#services" class="text-white hover:text-vital-green transition-colors">Services</a>
+                    <a href="#about" class="text-white hover:text-vital-green transition-colors">About</a>
+                    <a href="#contact" class="text-white hover:text-vital-green transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-vital-dark bg-opacity-95 z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-vital-white text-2xl hover:text-vital-green transition-colors mobile-nav-link">Home</a>
+            <a href="#services" class="text-vital-white text-2xl hover:text-vital-green transition-colors mobile-nav-link">Services</a>
+            <a href="#about" class="text-vital-white text-2xl hover:text-vital-green transition-colors mobile-nav-link">About</a>
+            <a href="#contact" class="text-vital-white text-2xl hover:text-vital-green transition-colors mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center gradient-bg">
+        <div class="particles" id="particles"></div>
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white space-y-6">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                        Your Journey to 
+                        <span class="text-vital-green">Recovery</span> 
+                        Starts Here
+                    </h1>
+                    <p class="text-xl text-vital-white/90 leading-relaxed">
+                        Experience world-class physiotherapy care in the heart of Amwaj Island. 
+                        Our expert team is dedicated to restoring your mobility and enhancing your quality of life.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('contact')" class="bg-vital-green hover:bg-vital-green/90 text-vital-dark px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105">
+                            Book Consultation
+                        </button>
+                        <button onclick="scrollToSection('services')" class="border-2 border-vital-blue text-vital-blue hover:bg-vital-blue hover:text-vital-dark px-8 py-4 rounded-full font-semibold text-lg transition-all">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=600&fit=crop&crop=center" 
+                         alt="Modern Physiotherapy Treatment" 
+                         class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                    <div class="absolute -bottom-6 -right-6 bg-vital-green text-vital-dark p-6 rounded-2xl shadow-xl">
+                        <div class="text-3xl font-bold"><i class="fas fa-heart"></i></div>
+                        <div class="text-sm">Expert Care</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-vital-dark mb-6">Our Specialized Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive physiotherapy solutions tailored to your unique needs and recovery goals
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-blue/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-blue/20 transition-colors">
+                        <i class="fas fa-running text-vital-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Sports Rehabilitation</h3>
+                    <p class="text-gray-600">Specialized recovery programs designed for athletes and active individuals to return to peak performance safely and efficiently.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-green/20 transition-colors">
+                        <i class="fas fa-heart text-vital-green text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Pain Management</h3>
+                    <p class="text-gray-600">Advanced therapeutic techniques to alleviate chronic pain and restore comfortable movement patterns for daily activities.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-blue/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-blue/20 transition-colors">
+                        <i class="fas fa-user-md text-vital-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Manual Therapy</h3>
+                    <p class="text-gray-600">Hands-on treatment approaches focusing on joint mobility, muscle flexibility, and tissue healing for optimal recovery.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-green/20 transition-colors">
+                        <i class="fas fa-wheelchair text-vital-green text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Mobility Enhancement</h3>
+                    <p class="text-gray-600">Comprehensive programs to improve balance, coordination, and functional movement for enhanced independence.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-blue/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-blue/20 transition-colors">
+                        <i class="fas fa-brain text-vital-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Neurological Care</h3>
+                    <p class="text-gray-600">Specialized treatment for neurological conditions focusing on restoring function and improving quality of life.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="group bg-vital-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-vital-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-vital-green/20 transition-colors">
+                        <i class="fas fa-child text-vital-green text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vital-dark mb-4">Pediatric Therapy</h3>
+                    <p class="text-gray-600">Gentle, age-appropriate treatment approaches designed specifically for children's developmental and recovery needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-vital-dark">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                        Excellence in 
+                        <span class="text-vital-green">Physiotherapy Care</span>
+                    </h2>
+                    <p class="text-xl text-vital-white/90 leading-relaxed">
+                        Located in the prestigious Amwaj Island, Vital Move represents the pinnacle of modern physiotherapy practice. 
+                        Our state-of-the-art facility combines cutting-edge technology with personalized care approaches.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-6 bg-vital-blue/10 rounded-2xl">
+                            <div class="text-4xl font-bold text-vital-green mb-2"><i class="fas fa-users"></i></div>
+                            <div class="text-vital-white/80">Community Focus</div>
+                        </div>
+                        <div class="text-center p-6 bg-vital-green/10 rounded-2xl">
+                            <div class="text-4xl font-bold text-vital-blue mb-2"><i class="fas fa-stethoscope"></i></div>
+                            <div class="text-vital-white/80">Quality Treatment</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-vital-green/20 text-vital-green px-4 py-2 rounded-full">Advanced Equipment</span>
+                        <span class="bg-vital-blue/20 text-vital-blue px-4 py-2 rounded-full">Expert Team</span>
+                        <span class="bg-vital-green/20 text-vital-green px-4 py-2 rounded-full">Personalized Care</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center" 
+                         alt="Modern Physiotherapy Facility" 
+                         class="rounded-3xl shadow-2xl w-full">
+                    <div class="absolute -top-8 -left-8 bg-vital-green text-vital-dark p-6 rounded-2xl shadow-xl">
+                        <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                        <div class="text-sm font-semibold">Trusted Care</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gradient-to-br from-vital-white to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-vital-dark mb-6">Why Choose Vital Move?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the difference with our comprehensive approach to physiotherapy and rehabilitation
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="bg-vital-blue/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-vital-blue/20 transition-colors">
+                        <i class="fas fa-clock text-vital-blue text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-vital-dark mb-4">Flexible Scheduling</h3>
+                    <p class="text-gray-600">Convenient appointment times to fit your busy lifestyle and recovery needs.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-vital-green/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-vital-green/20 transition-colors">
+                        <i class="fas fa-microscope text-vital-green text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-vital-dark mb-4">Latest Technology</h3>
+                    <p class="text-gray-600">State-of-the-art equipment and innovative treatment methods for optimal results.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-vital-blue/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-vital-blue/20 transition-colors">
+                        <i class="fas fa-users text-vital-blue text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-vital-dark mb-4">Expert Team</h3>
+                    <p class="text-gray-600">Highly qualified professionals with extensive experience and specialized training.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-vital-green/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-vital-green/20 transition-colors">
+                        <i class="fas fa-home text-vital-green text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-vital-dark mb-4">Comfortable Environment</h3>
+                    <p class="text-gray-600">Welcoming, modern facilities designed for your comfort and privacy during treatment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-vital-dark">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                        Ready to Start Your 
+                        <span class="text-vital-green">Recovery Journey?</span>
+                    </h2>
+                    <p class="text-xl text-vital-white/90">
+                        Take the first step towards better health and mobility. Our team is here to support you every step of the way.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-vital-blue/20 p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt text-vital-blue text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Location</div>
+                                <div class="text-vital-white/80">Amwaj Island, Kingdom of Bahrain</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-vital-green/20 p-3 rounded-full">
+                                <i class="fas fa-phone text-vital-green text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Phone</div>
+                                <div class="text-vital-white/80">+973 3911 1322</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-vital-blue/20 p-3 rounded-full">
+                                <i class="fas fa-envelope text-vital-blue text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Email</div>
+                                <div class="text-vital-white/80">info@vitalmove.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-vital-white/10 backdrop-blur-md rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Book Your Consultation</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="First Name" class="bg-vital-white/20 border border-vital-white/30 rounded-xl px-4 py-3 text-white placeholder-vital-white/70 focus:outline-none focus:border-vital-green">
+                            <input type="text" placeholder="Last Name" class="bg-vital-white/20 border border-vital-white/30 rounded-xl px-4 py-3 text-white placeholder-vital-white/70 focus:outline-none focus:border-vital-green">
+                        </div>
+                        <input type="email" placeholder="Email Address" class="w-full bg-vital-white/20 border border-vital-white/30 rounded-xl px-4 py-3 text-white placeholder-vital-white/70 focus:outline-none focus:border-vital-green">
+                        <input type="tel" placeholder="Phone Number" class="w-full bg-vital-white/20 border border-vital-white/30 rounded-xl px-4 py-3 text-white placeholder-vital-white/70 focus:outline-none focus:border-vital-green">
+                        <textarea placeholder="Tell us about your condition or questions..." rows="4" class="w-full bg-vital-white/20 border border-vital-white/30 rounded-xl px-4 py-3 text-white placeholder-vital-white/70 focus:outline-none focus:border-vital-green resize-none"></textarea>
+                        <button type="submit" class="w-full bg-vital-green hover:bg-vital-green/90 text-vital-dark font-semibold py-4 rounded-xl transition-colors">
+                            Schedule Consultation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-vital-dark border-t border-vital-blue/20 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <img src="assets/logo.png" alt="Vital Move Logo" class="h-16 w-auto logo-inverted">
+                    </div>
+                    <p class="text-vital-white/80">
+                        Leading physiotherapy centre in Amwaj Island, dedicated to your recovery and wellness journey.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-vital-blue/20 p-2 rounded-full hover:bg-vital-blue/30 transition-colors">
+                            <i class="fab fa-facebook text-vital-blue"></i>
+                        </a>
+                        <a href="#" class="bg-vital-green/20 p-2 rounded-full hover:bg-vital-green/30 transition-colors">
+                            <i class="fab fa-instagram text-vital-green"></i>
+                        </a>
+                        <a href="#" class="bg-vital-blue/20 p-2 rounded-full hover:bg-vital-blue/30 transition-colors">
+                            <i class="fab fa-linkedin text-vital-blue"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-vital-white/80">
+                        <li><a href="#" class="hover:text-vital-green transition-colors">Sports Rehabilitation</a></li>
+                        <li><a href="#" class="hover:text-vital-green transition-colors">Pain Management</a></li>
+                        <li><a href="#" class="hover:text-vital-green transition-colors">Manual Therapy</a></li>
+                        <li><a href="#" class="hover:text-vital-green transition-colors">Mobility Enhancement</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-vital-white/80">
+                        <li><a href="#about" class="hover:text-vital-green transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-vital-green transition-colors">Our Services</a></li>
+                        <li><a href="#contact" class="hover:text-vital-green transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-vital-green transition-colors">Appointments</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-vital-white/80">
+                        <li>Amwaj Island, Kingdom of Bahrain</li>
+                        <li>+973 3911 1322</li>
+                        <li>info@vitalmove.com</li>
+                        <li>Mon - Sat: 8AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-vital-blue/20 mt-12 pt-8 text-center text-vital-white/60">
+                <p>&copy; 2025 Vital Move Physiotherapy Centre. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 80; // Much more particles
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 1px and 12px
+                const size = Math.random() * 11 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random starting position
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 25 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and feature items
+        document.querySelectorAll('.group').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you soon to schedule your consultation.');
+            this.reset();
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const logo = document.getElementById('navbar-logo');
+            const navLinks = document.getElementById('nav-links');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            
+            if (window.scrollY > 50) {
+                // Light background - normal logo colors, dark text
+                nav.style.background = 'rgba(212, 212, 210, 0.95)';
+                logo.className = logo.className.replace('logo-inverted', 'logo-normal');
+                
+                // Change nav links to dark
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.className = link.className.replace('text-white', 'text-vital-dark');
+                });
+                mobileBtn.className = mobileBtn.className.replace('text-white', 'text-vital-dark');
+            } else {
+                // Transparent/dark background - inverted logo colors, light text
+                nav.style.background = 'rgba(212, 212, 210, 0.1)';
+                logo.className = logo.className.replace('logo-normal', 'logo-inverted');
+                
+                // Change nav links to white
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.className = link.className.replace('text-vital-dark', 'text-white');
+                });
+                mobileBtn.className = mobileBtn.className.replace('text-vital-dark', 'text-white');
+            }
+        });
+    </script>
+</body>
+</html> 
